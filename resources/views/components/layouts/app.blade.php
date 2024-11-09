@@ -8,6 +8,12 @@
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet-providers@latest/leaflet-providers.js"></script>
+
+
+        <link rel="stylesheet" href="{{ asset('css/Leaflet.NavBar.css') }}">
+        <script src="{{ asset('js/Leaflet.NavBar.js') }}"></script>
+        <script src="{{ asset('js/map.js') }}"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="flex">

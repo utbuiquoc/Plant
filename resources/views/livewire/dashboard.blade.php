@@ -1,8 +1,8 @@
-<div class="w-full bg-slate-100 p-3 flex">
+<div class="w-full bg-slate-100 p-5 flex">
 	{{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
-	<div class="grid grid-cols-10 gap-4">
+	<div class="grid grid-cols-10 gap-5">
 		<div class="col-span-10 bg-white rounded-xl p-12 border-solid border border-grey-500"
-			 style="background-image: url('{{ asset('images/summer.jpg') }}')">
+			 style="background-image: url('{{ asset('img/summer.jpg') }}')">
 			<p class="text-4xl text-white font-bold">Hạ</p>
 		</div>
 		<div class="col-span-3 bg-white rounded-xl p-5 border-solid border border-grey-500">
@@ -12,10 +12,10 @@
 			</div>
 
 			<div class="flex flex-row">
-				<div class="flex flex-col justify-evenly">	
-					<p>Mưa: không</p>
-					<p>Nhiệt độ môi trường: 32℃</p>
-					<p>Độ ẩm không khí: 96%</p>
+				<div class="flex flex-col justify-evenly ms-3">	
+					<p>Mưa: <span class="font-bold">không</span> </p>
+					<p>Nhiệt độ môi trường: <span class="font-bold">32℃</span> </p>
+					<p>Độ ẩm không khí: <span class="font-bold">96%</span> </p>
 				</div>
 
 				<div class="flex justify-center grow">
