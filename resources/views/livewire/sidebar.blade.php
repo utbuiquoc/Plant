@@ -14,13 +14,40 @@
             <x-majestic-map-marker-path-solid class="w-6 h-6 mt-0.5 me-1" />Map
         </a>
 
-        <a href="#" class="
-            {{ (request()->routeIs('analytics')) ? 'bg-violet-500  text-white' : '' }}
-            mb-1 p-3 text-lg flex rounded-md hover:bg-violet-600 hover:text-white active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
-            <x-uni-analytics class="w-6 h-6 me-1" />Analytics
-        </a>
+        <div class="">
+            <a href="/analytics" class="
+                {{ (request()->routeIs('analytics')) ? 'bg-violet-500  text-white' : '' }}
+                mb-1 p-3 text-lg justify-between flex rounded-md hover:bg-violet-600 hover:text-white active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
+                <span class="flex">
+                    <x-uni-analytics class="w-6 h-6 me-1" />
+                    Analytics
+                </span>
+    
+                <x-hugeicons-arrow-down-01 class="align-right mt-0.5"/>
+            </a>
+            
+            <div class="ms-4">
+                <a href="/device/1" 
+                    id="device-1"
+                    class="
+                    {{ (request()->routeIs('device-1')) ? 'bg-violet-500  text-white' : '' }}
+                    mb-1 p-3 text-lg flex rounded-md hover:bg-violet-600 hover:text-white active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
+                    <span class="w-6 h-6 mt-0.5 me-1">@svg('gmdi-sensors-r')</span>
+                    Thiết bị 1
+                </a>
+
+                <a href="/device/2" 
+                    id="device-2"
+                    class="
+                    {{ (request()->routeIs('device-2')) ? 'bg-violet-500  text-white' : '' }}
+                    mb-1 p-3 text-lg flex rounded-md hover:bg-violet-600 hover:text-white active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
+                    <span class="w-6 h-6 mt-0.5 me-1">@svg('gmdi-sensors-r')</span>
+                    Thiết bị 2
+                </a>
+            </div>
+        </div>
         
-        <a href="#" class="
+        <a href="/warning" class="
             {{ (request()->routeIs('warning')) ? 'bg-violet-500  text-white' : '' }}
             p-3 text-lg flex rounded-md hover:bg-violet-600 hover:text-white active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
             <x-solar-shield-warning-bold class="w-6 h-6 mt-0.5 me-1" />Warning

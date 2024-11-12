@@ -6,9 +6,9 @@
 
         <title>{{ $title ?? 'Page Title' }}</title>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
-        <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
-        <script src="https://unpkg.com/leaflet-providers@latest/leaflet-providers.js"></script>
+        <link rel="stylesheet" href="{{ asset('css/leaflet.css' )}}" />
+        <script src="{{ asset('js/leaflet.js' )}}"></script>
+        <script src="{{ asset('js/leaflet-providers.js') }}"></script>
 
 
         <link rel="stylesheet" href="{{ asset('css/Leaflet.NavBar.css') }}">
@@ -19,5 +19,6 @@
     <body class="flex">
         <livewire:sidebar />
         {{ $slot }}
+        
     </body>
 </html>
