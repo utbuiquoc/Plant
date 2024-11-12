@@ -31,7 +31,7 @@
 			curve: 'smooth'
 		},
 		title: {
-			text: 'Độ ẩm đất',
+			text: 'Nhiệt độ đất',
 			align: 'left'
 		},
 		grid: {

@@ -1,12 +1,17 @@
 <div class="w-full h-dvh overflow-scroll bg-slate-100 p-5">
 	{{-- Nothing in the world is as soft and yielding as water. --}}
 	<div class="grid grid-cols-12 w-full gap-5">
-		<div class="col-span-12 bg-white rounded-xl p-4 border-solid border border-grey-500">
-			<livewire:charts.air />
+		<div class="col-span-5 bg-white rounded-xl p-4 border-solid border border-grey-500">
+			<livewire:charts.rain />
 		</div>
 
 		<div class="col-span-7 bg-white rounded-xl p-4 border-solid border border-grey-500">
-			<livewire:charts.soiltemp />
+			<livewire:charts.air />
+		</div>
+
+
+		<div class="col-span-7 bg-white rounded-xl p-4 border-solid border border-grey-500">
+			<livewire:charts.airtemp />
 		</div>
 
 		<div class="flex flex-col col-span-5 bg-white rounded-xl p-4 border-solid border border-sky-500">
@@ -49,7 +54,7 @@
 		</div>
 		
 		<div class="col-span-4 bg-white rounded-xl p-4 border-solid border border-grey-500">
-			<livewire:charts.airtemp />
+			<livewire:charts.soiltemp />
 		</div>
 
 		<div class="col-span-4 bg-white rounded-xl p-4 border-solid border border-grey-500">
@@ -62,6 +67,14 @@
 
 		<div class="col-span-4 bg-white rounded-xl p-4 border-solid border border-grey-500">
 			<livewire:charts.potassium />
+		</div>
+
+		<div class="col-span-6 bg-white rounded-xl p-4 border-solid border border-grey-500">
+			<livewire:charts.humidity />
+		</div>
+
+		<div class="col-span-6 bg-white rounded-xl p-4 border-solid border border-grey-500">
+			<livewire:charts.soilmoisture />
 		</div>
 	</div>
 </div>
