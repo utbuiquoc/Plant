@@ -3,21 +3,25 @@
 </div>
 
 <script>
+	let datas = @json($data);
+	let series = [];
+
+	datas.forEach(data => {
+		let values = [];
+		let name = 'Thiết bị ' + data[0].device_id;
+		data.forEach(el => {
+			values.push(el.value);
+		});
+		
+		series.push({
+			name: name,
+			data: values,
+		});
+	});
+
+	
     var airOptions = {
-		series: [
-			{
-				name: 'Metric1',
-				data: [23, 27, 1, 80, 78, 11, 6, 66, 36, 56, 63, 86, 8, 4, 71, 15, 99, 17]
-			},
-			{
-				name: 'Metric2',
-				data: [81, 77, 42, 37, 54, 7, 76, 5, 93, 83, 22, 96, 2, 55, 48, 12, 14, 73]
-			},
-			// {
-			// 	name: 'Metric3',
-			// 	data: [91, 21, 25, 10, 100, 32, 70, 34, 90, 24, 20, 30, 88, 68, 82, 59, 69, 95]
-			// }
-		],
+		series: series,
 
 		chart: {
 			height: 200,

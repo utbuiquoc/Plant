@@ -2,7 +2,7 @@
     {{-- Close your eyes. Count to one. That is how long forever feels. --}}
     <div class="grid grid-cols-12 w-full gap-5">
         <div class="col-span-12 bg-white rounded-xl p-4 border-solid border border-grey-500">
-            <livewire:charts.air />
+            <livewire:charts.airquality :ids="$id" />
         </div>
 
         <div class="col-span-7 bg-white rounded-xl p-4 border-solid border border-grey-500">

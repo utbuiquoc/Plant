@@ -24,9 +24,9 @@ class FakeDataSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 9; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             DB::table('air_qualities')->insert([
-                'device_id' => 4,
+                'device_id' => 2,
                 'value' => rand(50, 60),
                 'created_at' => now(),
             ]);

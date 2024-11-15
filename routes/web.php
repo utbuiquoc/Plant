@@ -18,4 +18,6 @@ Route::get('/device/{id}', Device::class)->name('device');
 
 Route::get('/warning', Warning::class)->name('warning');
 
-Route::get('/user/{id}', Test::class)->name('user.show');
+
+use App\Livewire\Charts\Airquality;
+Route::get('/test', Airquality::class);

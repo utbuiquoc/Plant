@@ -6,7 +6,7 @@
 		</div>
 
 		<div class="col-span-7 bg-white rounded-xl p-4 border-solid border border-grey-500">
-			<livewire:charts.air />
+			<livewire:charts.airquality :ids="0" />
 		</div>
 
 
