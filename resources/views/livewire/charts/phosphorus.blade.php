@@ -29,6 +29,10 @@
 			text: 'Phốt pho',
 			align: 'left'
 		},
+        subtitle: {
+          text: 'ppm',
+          align: 'left'
+        },
         tooltip: {
             x: {
                 format: 'dd/MM/yy HH:mm'

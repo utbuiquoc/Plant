@@ -27,23 +27,16 @@
             </a>
             
             <div class="ms-4">
-                <a href="/device/1" 
-                    id="device-1"
-                    class="
-                    {{ (request()->routeIs('device-1')) ? 'bg-violet-500  text-white' : '' }}
-                    mb-1 p-3 text-lg flex rounded-md hover:bg-violet-600 hover:text-white active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
-                    <span class="w-6 h-6 mt-0.5 me-1">@svg('gmdi-sensors-r')</span>
-                    Thiết bị 1
-                </a>
-
-                <a href="/device/2" 
-                    id="device-2"
-                    class="
-                    {{ (request()->routeIs('device-2')) ? 'bg-violet-500  text-white' : '' }}
-                    mb-1 p-3 text-lg flex rounded-md hover:bg-violet-600 hover:text-white active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
-                    <span class="w-6 h-6 mt-0.5 me-1">@svg('gmdi-sensors-r')</span>
-                    Thiết bị 2
-                </a>
+                @foreach ($devices as $device)
+                    <a href="/device/{{ $device->id }}" 
+                        id="device-{{ $device->id }}"
+                        class="
+                        {{ ($route_id == $device->id) ? 'bg-violet-500  text-white' : '' }}
+                        mb-1 p-3 text-lg flex rounded-md hover:bg-violet-600 hover:text-white active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
+                        <span class="w-6 h-6 mt-0.5 me-1">@svg('gmdi-sensors-r')</span>
+                        Thiết bị {{ $device->id }}
+                    </a>
+                @endforeach
             </div>
         </div>
         

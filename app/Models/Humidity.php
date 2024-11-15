@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Humidity extends Model
 {
-    //
+    public function post(): BelongsTo
+    {
+        return $this->belongsTo(Device::class);
+    }
 }
