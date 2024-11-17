@@ -3,17 +3,20 @@
 </div>
 
 <script>
-	let datas = @json($data);
-	let series = [];
+	let airquality_data = @json($data);
+	let irquality_series = [];
 
-	datas.forEach(data => {
+	airquality_data.forEach(data => {
 		let values = [];
 		let name = 'Thiết bị ' + data[0].device_id;
 		data.forEach(el => {
-			values.push(el.value);
+			values.push({
+				'x': el.created_at,
+				'y': el.value
+			});
 		});
 		
-		series.push({
+		irquality_series.push({
 			name: name,
 			data: values,
 		});
@@ -21,11 +24,17 @@
 
 	
     var airOptions = {
-		series: series,
-
+		series: irquality_series,
 		chart: {
 			height: 200,
 			type: 'heatmap',
+		},
+		xaxis: {
+			type: "datetime",
+			labels: {
+				format: 'dd MMM',
+				showDuplicates: true
+			}
 		},
 		dataLabels: {
 			enabled: false
@@ -35,9 +44,53 @@
 			text: 'Chất lượng không khí'
 		},
 		subtitle: {
-          text: 'AQI',
-          align: 'left'
+			text: 'AQI',
+			align: 'left'
         },
+		plotOptions: {
+		heatmap: {
+			colorScale: {
+				ranges: [
+					{
+						from: 0,
+						to: 49,
+						color: '#00E400',
+						name: 'Tốt',
+					},
+					{
+						from: 50,
+						to: 99,
+						color: '#FFFF00',
+						name: 'Trung bình',
+					},
+					{
+						from: 100,
+						to: 149,
+						color: '#FF7E00',
+						name: 'Kém',
+					},
+					{
+						from: 150,
+						to: 199,
+						color: '#FF0000',
+						name: 'Xấu',
+					},
+					{
+						from: 200,
+						to: 299,
+						color: '#8F3F97',
+						name: 'Rất xấu',
+					},
+					{
+						from: 300,
+						to: 500,
+						color: '#7E0023',
+						name: 'Nguy hại',
+					},
+				]
+			}
+		}
+    }
 	};
 
 	var airChart = new ApexCharts(document.querySelector("#air"), airOptions);

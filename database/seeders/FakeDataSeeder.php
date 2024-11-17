@@ -24,12 +24,52 @@ class FakeDataSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 10; $i++) {
-            DB::table('air_qualities')->insert([
-                'device_id' => 2,
-                'value' => rand(50, 60),
-                'created_at' => now(),
-            ]);
-        }
+        DB::table('air_qualities')->insert([
+            'device_id' => 1,
+            'value' => rand(40, 60),
+            'created_at' => now(),
+        ]);
+
+        DB::table('air_qualities')->insert([
+            'device_id' => 2,
+            'value' => rand(40, 60),
+            'created_at' => now(),
+        ]);
+
+        DB::table('nitrogen')->insert([
+            'device_id' => 1,
+            'value' => rand(5, 10),
+            'created_at' => now(),
+        ]);
+
+        DB::table('phosphorus')->insert([
+            'device_id' => 1,
+            'value' => rand(70, 110),
+            'created_at' => now(),
+        ]);
+
+        DB::table('potassium')->insert([
+            'device_id' => 1,
+            'value' => rand(150, 200),
+            'created_at' => now(),
+        ]);
+        
+        DB::table('nitrogen')->insert([
+            'device_id' => 2,
+            'value' => rand(5, 10),
+            'created_at' => now(),
+        ]);
+
+        DB::table('phosphorus')->insert([
+            'device_id' => 2,
+            'value' => rand(70, 110),
+            'created_at' => now(),
+        ]);
+
+        DB::table('potassium')->insert([
+            'device_id' => 2,
+            'value' => rand(150, 200),
+            'created_at' => now(),
+        ]);
     }
 }

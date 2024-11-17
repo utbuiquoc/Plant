@@ -19,5 +19,5 @@ Route::get('/device/{id}', Device::class)->name('device');
 Route::get('/warning', Warning::class)->name('warning');
 
 
-use App\Livewire\Charts\Airquality;
-Route::get('/test', Airquality::class);
+use App\Livewire\Charts\Nitrogen;
+Route::get('/test', Nitrogen::class);

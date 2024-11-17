@@ -53,15 +53,15 @@
         </div>
 
         <div class="col-span-4 bg-white rounded-xl p-4 border-solid border border-grey-500">
-            <livewire:charts.nitrogen />
+            <livewire:charts.nitrogen :ids="$id" />
         </div>
 
         <div class="col-span-4 bg-white rounded-xl p-4 border-solid border border-grey-500">
-            <livewire:charts.phosphorus />
+            <livewire:charts.phosphorus :ids="$id" />
         </div>
 
         <div class="col-span-4 bg-white rounded-xl p-4 border-solid border border-grey-500">
-            <livewire:charts.potassium />
+            <livewire:charts.potassium :ids="$id" />
         </div>
     </div>
 </div>

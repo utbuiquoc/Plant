@@ -20,6 +20,7 @@ class Airquality extends Component
             $this->data[0] = airqual::where('device_id', $ids)->get();
         }
     }
+    
     public function render()
     {
         return view('livewire.charts.airquality');

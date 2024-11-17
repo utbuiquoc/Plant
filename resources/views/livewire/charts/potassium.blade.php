@@ -3,14 +3,29 @@
 </div>
 
 <script>
+    let potassium_data = @json($data);
+	let potassium_series = [];
+    let potassium_times = [];
+
+    potassium_data[0].forEach(el => {
+        potassium_times.push(el.created_at);
+    });
+
+	potassium_data.forEach(data => {
+		let values = [];
+		let name = 'Thiết bị ' + data[0].device_id;
+		data.forEach(el => {
+			values.push(Number(el.value));
+		});
+		
+		potassium_series.push({
+			name: name,
+			data: values,
+		});
+	});
+
     var options = {
-        series: [{
-            name: 'series1',
-            data: [31, 40, 28, 51, 42, 109, 100]
-        }, {
-            name: 'series2',
-            data: [11, 32, 45, 32, 34, 52, 41]
-        }],
+        series: potassium_series,
         chart: {
             height: 350,
             type: 'area'
@@ -23,7 +38,7 @@
         },
         xaxis: {
             type: 'datetime',
-            categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+            categories: potassium_times,
         },
 		title: {
 			text: 'Kali',
