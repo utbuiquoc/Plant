@@ -24,51 +24,101 @@ class FakeDataSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('air_qualities')->insert([
-            'device_id' => 1,
-            'value' => rand(40, 60),
-            'created_at' => now(),
-        ]);
+        // DB::table('air_qualities')->insert([
+        //     'device_id' => 1,
+        //     'value' => rand(40, 60),
+        //     'created_at' => now(),
+        // ]);
 
-        DB::table('air_qualities')->insert([
-            'device_id' => 2,
-            'value' => rand(40, 60),
-            'created_at' => now(),
-        ]);
+        // DB::table('air_qualities')->insert([
+        //     'device_id' => 2,
+        //     'value' => rand(40, 60),
+        //     'created_at' => now(),
+        // ]);
 
-        DB::table('nitrogen')->insert([
-            'device_id' => 1,
-            'value' => rand(5, 10),
-            'created_at' => now(),
-        ]);
+        // DB::table('nitrogen')->insert([
+        //     'device_id' => 1,
+        //     'value' => rand(5, 10),
+        //     'created_at' => now(),
+        // ]);
 
-        DB::table('phosphorus')->insert([
-            'device_id' => 1,
-            'value' => rand(70, 110),
-            'created_at' => now(),
-        ]);
+        // DB::table('phosphorus')->insert([
+        //     'device_id' => 1,
+        //     'value' => rand(70, 110),
+        //     'created_at' => now(),
+        // ]);
 
-        DB::table('potassium')->insert([
-            'device_id' => 1,
-            'value' => rand(150, 200),
-            'created_at' => now(),
-        ]);
+        // DB::table('potassium')->insert([
+        //     'device_id' => 1,
+        //     'value' => rand(150, 200),
+        //     'created_at' => now(),
+        // ]);
         
-        DB::table('nitrogen')->insert([
-            'device_id' => 2,
-            'value' => rand(5, 10),
+        // DB::table('nitrogen')->insert([
+        //     'device_id' => 2,
+        //     'value' => rand(5, 10),
+        //     'created_at' => now(),
+        // ]);
+
+        // DB::table('phosphorus')->insert([
+        //     'device_id' => 2,
+        //     'value' => rand(70, 110),
+        //     'created_at' => now(),
+        // ]);
+
+        // DB::table('potassium')->insert([
+        //     'device_id' => 2,
+        //     'value' => rand(150, 200),
+        //     'created_at' => now(),
+        // ]);
+
+        // DB::table('soil_temperatures')->insert([
+        //     'device_id' => 1,
+        //     'value' => rand(20, 27),
+        //     'created_at' => now(),
+        // ]);
+
+        // DB::table('soil_temperatures')->insert([
+        //     'device_id' => 2,
+        //     'value' => rand(20, 27),
+        //     'created_at' => now(),
+        // ]);
+
+        // DB::table('soil_moistures')->insert([
+        //     'device_id' => 1,
+        //     'value' => rand(50, 75),
+        //     'created_at' => now(),
+        // ]);
+
+        // DB::table('soil_moistures')->insert([
+        //     'device_id' => 2,
+        //     'value' => rand(50, 75),
+        //     'created_at' => now(),
+        // ]);
+
+
+        // DB::table('humidities')->insert([
+        //     'device_id' => 1,
+        //     'value' => rand(15, 20),
+        //     'created_at' => now(),
+        // ]);
+
+        // DB::table('humidities')->insert([
+        //     'device_id' => 2,
+        //     'value' => rand(15, 20),
+        //     'created_at' => now(),
+        // ]);
+
+        
+        DB::table('airtemps')->insert([
+            'device_id' => 1,
+            'value' => rand(20, 25),
             'created_at' => now(),
         ]);
 
-        DB::table('phosphorus')->insert([
+        DB::table('airtemps')->insert([
             'device_id' => 2,
-            'value' => rand(70, 110),
-            'created_at' => now(),
-        ]);
-
-        DB::table('potassium')->insert([
-            'device_id' => 2,
-            'value' => rand(150, 200),
+            'value' => rand(20, 25),
             'created_at' => now(),
         ]);
     }

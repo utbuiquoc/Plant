@@ -11,7 +11,7 @@
 
 
 		<div class="col-span-7 bg-white rounded-xl p-4 border-solid border border-grey-500">
-			<livewire:charts.airtemp />
+			<livewire:charts.airtemp :ids="0" />
 		</div>
 
 		<div class="flex flex-col col-span-5 bg-white rounded-xl p-4 border-solid border border-sky-500">
@@ -54,7 +54,7 @@
 		</div>
 		
 		<div class="col-span-4 bg-white rounded-xl p-4 border-solid border border-grey-500">
-			<livewire:charts.soiltemp />
+			<livewire:charts.soiltemp :ids="0" />
 		</div>
 
 		<div class="col-span-4 bg-white rounded-xl p-4 border-solid border border-grey-500">
@@ -70,11 +70,11 @@
 		</div>
 
 		<div class="col-span-6 bg-white rounded-xl p-4 border-solid border border-grey-500">
-			<livewire:charts.humidity />
+			<livewire:charts.humidity :ids="0" />
 		</div>
 
 		<div class="col-span-6 bg-white rounded-xl p-4 border-solid border border-grey-500">
-			<livewire:charts.soilmoisture />
+			<livewire:charts.soilmoisture :ids="0" />
 		</div>
 	</div>
 </div>

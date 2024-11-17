@@ -3,14 +3,29 @@
 </div>
 
 <script>
+    let soilmoisutre_data = @json($data);
+	let soilmoisutre_series = [];
+    let soilmoisutre_times = [];
+
+    soilmoisutre_data[0].forEach(el => {
+        soilmoisutre_times.push(el.created_at);
+    });
+
+	soilmoisutre_data.forEach(data => {
+		let values = [];
+		let name = 'Thiết bị ' + data[0].device_id;
+		data.forEach(el => {
+			values.push(Number(el.value));
+		});
+		
+		soilmoisutre_series.push({
+			name: name,
+			data: values,
+		});
+	});
+
     var options = {
-        series: [{
-            name: 'series1',
-            data: [31, 40, 28, 51, 42, 109, 100]
-        }, {
-            name: 'series2',
-            data: [11, 32, 45, 32, 34, 52, 41]
-        }],
+        series: soilmoisutre_series,
         chart: {
             height: 350,
             type: 'area'
@@ -23,7 +38,7 @@
         },
         xaxis: {
             type: 'datetime',
-            categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+            categories: soilmoisutre_times
         },
 		title: {
 			text: 'Độ ẩm đất',

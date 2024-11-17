@@ -3,17 +3,29 @@
 </div>
 
 <script>
+	let airtemp_data = @json($data);
+	let airtemp_series = [];
+    let airtemp_times = [];
+
+    airtemp_data[0].forEach(el => {
+        airtemp_times.push(el.created_at);
+    });
+
+	airtemp_data.forEach(data => {
+		let values = [];
+		let name = 'Thiết bị ' + data[0].device_id;
+		data.forEach(el => {
+			values.push(Number(el.value));
+		});
+		
+		airtemp_series.push({
+			name: name,
+			data: values,
+		});
+	});
+	
     var temperatureOptions = {
-		series: [
-			{
-				name: 'series1',
-				data: [31, 40, 28, 51, 42, 109, 100]
-			}, 
-			{
-				name: 'series2',
-				data: [11, 32, 45, 32, 34, 52, 41]
-			}
-		],
+		series: airtemp_series,
 		chart: {
 			height: 350,
 			type: 'area'
@@ -26,8 +38,8 @@
         },
         xaxis: {
 			type: 'datetime',
-			categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-        },
+			categories: airtemp_times
+		},
 		title: {
 			text: 'Nhiệt độ không khí',
 			align: 'left'

@@ -2,21 +2,29 @@
 <div id="soil-moisture" class="w-full h-full"></div>
 
 <script>
+	let soiltemp_data = @json($data);
+	let soiltemp_series = [];
+    let soiltemp_times = [];
+
+    soiltemp_data[0].forEach(el => {
+        soiltemp_times.push(el.created_at);
+    });
+
+	soiltemp_data.forEach(data => {
+		let values = [];
+		let name = 'Thiết bị ' + data[0].device_id;
+		data.forEach(el => {
+			values.push(Number(el.value));
+		});
+		
+		soiltemp_series.push({
+			name: name,
+			data: values,
+		});
+	});
+
     var soilMoistureOptions = {
-		series: [
-			{
-				name: "Thiết bị 1",
-				data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-			},
-			{
-				name: "Thiết bị 2",
-				data: [10, 43, 32, 49, 52, 60, 71, 94, 140]
-			},
-			// {
-			// 	name: "Thiết bị 3",
-			// 	data: [12, 44, 37, 55, 44, 66, 70, 99, 144]
-			// },
-		],
+		series: soiltemp_series,
 		chart: {
 			height: 350,
 			type: 'line',
@@ -44,9 +52,10 @@
 			opacity: 0.5
 			},
 		},
-		xaxis: {
-			categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-		}
+        xaxis: {
+            type: 'datetime',
+            categories: soiltemp_times,
+        },
 	};
 
 	var soilMoistureChart = new ApexCharts(document.querySelector("#soil-moisture"), soilMoistureOptions);
