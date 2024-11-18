@@ -32,7 +32,7 @@
 		xaxis: {
 			type: "datetime",
 			labels: {
-				format: 'dd MMM',
+				format: 'yyyy',
 				showDuplicates: true
 			}
 		},

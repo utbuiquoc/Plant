@@ -110,16 +110,42 @@ class FakeDataSeeder extends Seeder
         // ]);
 
         
-        DB::table('airtemps')->insert([
+        // DB::table('airtemps')->insert([
+        //     'device_id' => 1,
+        //     'value' => rand(20, 25),
+        //     'created_at' => now(),
+        // ]);
+
+        // DB::table('airtemps')->insert([
+        //     'device_id' => 2,
+        //     'value' => rand(20, 25),
+        //     'created_at' => now(),
+        // ]);
+
+        DB::table('rain')->insert([
             'device_id' => 1,
-            'value' => rand(20, 25),
+            'start' => now()->addDays(10),
+            'end' => now()->addDays(10)->addHours(rand(1, 10)),
             'created_at' => now(),
         ]);
 
-        DB::table('airtemps')->insert([
+        DB::table('rain')->insert([
             'device_id' => 2,
-            'value' => rand(20, 25),
+            'start' => now()->addDays(10),
+            'end' => now()->addDays(10)->addHours(rand(1, 10)),
             'created_at' => now(),
         ]);
+
+        // DB::table('pH')->insert([
+        //     'device_id' => 1,
+        //     'value' => rand(5, 10),
+        //     'created_at' => now(),
+        // ]);
+
+        // DB::table('pH')->insert([
+        //     'device_id' => 2,
+        //     'value' => rand(5, 10),
+        //     'created_at' => now(),
+        // ]);
     }
 }

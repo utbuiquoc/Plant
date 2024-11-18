@@ -2,7 +2,7 @@
 	{{-- Nothing in the world is as soft and yielding as water. --}}
 	<div class="grid grid-cols-12 w-full gap-5">
 		<div class="col-span-5 bg-white rounded-xl p-4 border-solid border border-grey-500">
-			<livewire:charts.rain />
+			<livewire:charts.rain :ids="0" />
 		</div>
 
 		<div class="col-span-7 bg-white rounded-xl p-4 border-solid border border-grey-500">
@@ -50,7 +50,7 @@
 		</div>
 
 		<div class="col-span-3 bg-white rounded-xl p-4 border-solid border border-grey-500 ">
-			<livewire:charts.ph />
+			<livewire:charts.ph :ids="0" />
 		</div>
 		
 		<div class="col-span-4 bg-white rounded-xl p-4 border-solid border border-grey-500">

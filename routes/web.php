@@ -20,4 +20,6 @@ Route::get('/warning', Warning::class)->name('warning');
 
 
 use App\Livewire\Charts\Nitrogen;
-Route::get('/test', Nitrogen::class);
+Route::get('/test', function() {
+    return now()->addHours(10);
+});

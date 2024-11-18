@@ -3,50 +3,69 @@
 </div>
 
 <script>
-    var pHOptions = {
-		series: [{
-			data: [44, 55, 41, 64, 22, 43, 21]
-		}, {
-			data: [53, 32, 33, 52, 13, 44, 32]
-		}],
-			chart: {
+	let pH_data = @json($data);
+	let pH_series = [];
+    let pH_times = [];
+
+    pH_data[0].forEach(el => {
+        pH_times.push(el.created_at);
+    });
+
+	pH_data.forEach(data => {
+		let values = [];
+		let name = 'Thiết bị ' + data[0].device_id;
+		data.forEach(el => {
+			values.push(Number(el.value));
+		});
+		
+		pH_series.push({
+			'name': name,
+			'data': values,
+		});
+	});
+
+	var pHOptions = {
+		series: pH_series,
+		chart: {
 			type: 'bar',
 			height: 350
 		},
 		plotOptions: {
 			bar: {
-			horizontal: true,
-			dataLabels: {
-				position: 'top',
+				horizontal: false,
+				columnWidth: '55%',
+				endingShape: 'rounded'
 			},
-			}
 		},
 		dataLabels: {
-			enabled: true,
-			offsetX: -6,
-			style: {
-			fontSize: '12px',
-			colors: ['#fff']
-			}
+			enabled: false
 		},
 		stroke: {
 			show: true,
-			width: 1,
-			colors: ['#fff']
-		},
-		title: {
-			text: 'Độ pH',
-			align: 'left'
-		},
-		tooltip: {
-			shared: true,
-			intersect: false
+			width: 2,
+			colors: ['transparent']
 		},
 		xaxis: {
-			categories: [2001, 2002, 2003, 2004, 2005, 2006, 2007],
+			type: 'datetime',
+			categories: pH_times,
 		},
+		yaxis: {
+			title: {
+				text: 'pH'
+			}
+		},
+		fill: {
+			opacity: 1
+		},
+		tooltip: {
+			y: {
+				formatter: function(val) {
+					return "$ " + val + "  pH"
+				}
+			}
+		}
 	};
 
-	var pHChart = new ApexCharts(document.querySelector("#pH"), pHOptions);
-	pHChart.render();
+	var chart = new ApexCharts(document.querySelector("#pH"), pHOptions);
+	chart.render();
 </script>

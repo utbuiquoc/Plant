@@ -3,24 +3,27 @@
 </div>
 
 <script>
+    let rain_data = @json($data);
+    let datas = [];
+
+	rain_data.forEach(data => {
+		let name = 'Thiết bị ' + data[0].device_id;
+		
+        data.forEach(el => {
+            datas.push({
+                x: name,
+                y: [
+                    new Date(el.start).getTime(),
+                    new Date(el.end).getTime()
+                ],
+            });
+        })
+	});
+
+    let rain_series = [{'data': datas}];
+
     var options = {
-        series: [{
-            data: [{
-                    x: 'Thiết bị 1',
-                    y: [
-                        new Date('2019-03-02').getTime(),
-                        new Date('2019-03-04').getTime()
-                    ]
-                },
-                {
-                    x: 'Thiết bị 2',
-                    y: [
-                        new Date('2019-03-04').getTime(),
-                        new Date('2019-03-08').getTime()
-                    ]
-                },
-            ]
-        }],
+        series: rain_series,
         chart: {
             height: 200,
             type: 'rangeBar'
@@ -36,7 +39,7 @@
 		},
         xaxis: {
             type: 'datetime'
-        }
+        },
     };
 
     var chart = new ApexCharts(document.querySelector("#rain"), options);
