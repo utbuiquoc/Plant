@@ -3,55 +3,22 @@
 </div>
 
 <script>
-    let map = L.map('map').setView([17.5065322, 106.5491147], 17);
+    let devices = @json($data);
+
+    let map = L.map('map').setView([devices[0].latitude, devices[0].longitude], 17);
 
     Esri_WorldImagery.addTo(map);
         
     L.control.layers(maps).addTo(map);
     L.control.navbar().addTo(map);
 
-    const devices = @json($devices);
     
     devices.forEach(device => {
         let toastEl = `
             <div <div class="grid grid-cols-2 w-[300px]">
                 <div class="grid-span-1 flex flex-col space-y-2">
-                    <div class="">
-                        <p class="!m-0">Nitơ</p>
-                        <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-                            <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 45%"> 45%</div>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="!m-0">Phốt pho</p>
-                        <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-                            <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 45%"> 45%</div>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="!m-0">Kali</p>
-                        <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-                            <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 45%"> 45%</div>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="!m-0">Nhiệt độ đất</p>
-                        <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-                            <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 45%"> 45%</div>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="!m-0">Độ ẩm đất</p>
-                        <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-                            <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 45%"> 45%</div>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="!m-0">Độ dẫn điện</p>
-                        <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-                            <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 45%"> 45%</div>
-                        </div>
-                    </div>
+                    <p class="font-bold !m-0">Vị trí:</p> ${device.latitude}, ${device.longitude}
+                    <p class="font-bold !m-0">Lắp đặt vào:</p> ${new Date(device.created_at).toLocaleString()}
                 </div>
                 <div class="grid-span-1">
                     <a href="/device/${device.id}" class="block w-3 h-3 absolute right-[20px] top-[6px] text-gray-400">@svg('gravityui-arrow-up-right-from-square')</a>

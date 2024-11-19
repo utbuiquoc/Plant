@@ -8,11 +8,11 @@ use App\Models\Device;
 
 class Maps extends Component
 {
-    public $devices;
+    public $data;
     
     public function mount()
     {
-        $this->devices = Device::all();
+        $this->data = Device::all();
     }
 
     #[Title('Map')]

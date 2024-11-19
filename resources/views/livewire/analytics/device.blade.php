@@ -46,7 +46,7 @@
 		
 
 		<div class="col-span-5 bg-white rounded-xl border-solid border border-grey-500">
-			<livewire:map />
+			<livewire:map :ids="$id" />
 		</div>
 
 		<div class="col-span-3 bg-white rounded-xl p-4 border-solid border border-grey-500 ">

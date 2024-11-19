@@ -6,6 +6,7 @@
 
         <title>{{ $title ?? 'Page Title' }}</title>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <link rel="stylesheet" href="{{ asset('css/leaflet.css' )}}" />
         <script src="{{ asset('js/leaflet.js' )}}"></script>
         <script src="{{ asset('js/leaflet-providers.js') }}"></script>
