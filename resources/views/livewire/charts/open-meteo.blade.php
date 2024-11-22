@@ -3,7 +3,7 @@
 </div>
 
 <script>
-    axios.get('https://api.open-meteo.com/v1/forecast?latitude=17.4692&longitude=106.6155&hourly=temperature_2m,precipitation_probability,precipitation,cloud_cover&timezone=Asia%2FBangkok&start_date=2024-11-18&end_date=2024-11-18')
+    axios.get('https://api.open-meteo.com/v1/forecast?latitude=17.4692&longitude=106.6155&hourly=temperature_2m,precipitation_probability,precipitation,cloud_cover&timezone=Asia%2FBangkok&start_date=2024-11-22&end_date=2024-11-22')
     .then(function (response) {
         // xử trí khi thành công
         console.log(response.data);

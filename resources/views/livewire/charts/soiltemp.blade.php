@@ -23,13 +23,16 @@
 		});
 	});
 
-    var soilMoistureOptions = {
+    var soilTempOptions = {
 		series: soiltemp_series,
 		chart: {
 			height: 350,
 			type: 'line',
+			animations: {
+				enabled: false,
+			},
 			zoom: {
-			enabled: false
+				enabled: false
 			}
 		},
 		dataLabels: {
@@ -58,6 +61,28 @@
         },
 	};
 
-	var soilMoistureChart = new ApexCharts(document.querySelector("#soil-moisture"), soilMoistureOptions);
-	soilMoistureChart.render();
+	var soilTempChart = new ApexCharts(document.querySelector("#soil-moisture"), soilTempOptions);
+	soilTempChart.render();
+
+	setTimeout(() => {
+		Echo.channel('soil-temp').listen('SoilTemp', (e) => {
+			if (!(e.device_id == device_id)) return;
+			console.log(e);
+			
+			if (soiltemp_series[0].data.length > 20) {
+				soiltemp_series[0].data.shift();
+				soiltemp_times.shift();
+			}
+
+			soiltemp_series[0].data.push(Number(e.value));
+			soiltemp_times.push(e.created_at);
+
+			soilTempChart.updateOptions({
+				xaxis: {
+					categories: soiltemp_times
+				},
+				series: soiltemp_series
+			});
+		});
+	}, 1000);
 </script>

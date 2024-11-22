@@ -1,4 +1,4 @@
-<div class="w-full h-dvh overflow-scroll bg-slate-100 p-5">
+<div class="w-full bg-slate-100 p-5">
 	{{-- Nothing in the world is as soft and yielding as water. --}}
 	<div class="grid grid-cols-12 w-full gap-5">
 		<div class="col-span-5 bg-white rounded-xl p-4 border-solid border border-grey-500">

@@ -44,7 +44,7 @@
 			text: 'Chất lượng không khí'
 		},
 		subtitle: {
-			text: 'AQI',
+			text: 'ppm',
 			align: 'left'
         },
 		plotOptions: {
@@ -95,4 +95,25 @@
 
 	var airChart = new ApexCharts(document.querySelector("#air"), airOptions);
 	airChart.render();
+
+	setTimeout(() => {
+		Echo.channel('air-quality').listen('AirQuality', (e) => {
+			if (!(e.device_id == device_id)) return;
+			console.log(e);
+			
+			if (irquality_series[0].data.length > 20) {
+				irquality_series[0].data.shift();
+			}
+
+			irquality_series[0].data.push({
+				x: e.created_at,
+				y: Number(e.value)
+			});
+			
+
+			airChart.updateOptions({
+				series: irquality_series
+			});
+		});
+	}, 1000);
 </script>

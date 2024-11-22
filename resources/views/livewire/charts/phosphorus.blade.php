@@ -28,7 +28,13 @@
         series: phosphorus_series,
         chart: {
             height: 350,
-            type: 'area'
+            type: 'area',
+			animations: {
+				enabled: false,
+			},
+			zoom: {
+				enabled: false
+			}
         },
         dataLabels: {
             enabled: false
@@ -55,6 +61,28 @@
         },
     };
 
-    var chart = new ApexCharts(document.querySelector("#phosphorus"), options);
-    chart.render();
+    var phosphorusChart = new ApexCharts(document.querySelector("#phosphorus"), options);
+    phosphorusChart.render();
+
+    setTimeout(() => {
+		Echo.channel('phosphorus').listen('Phosphorus', (e) => {
+			if (!(e.device_id == device_id)) return;
+			console.log(e);
+			
+			if (phosphorus_series[0].data.length > 20) {
+				phosphorus_series[0].data.shift();
+				phosphorus_times.shift();
+			}
+
+			phosphorus_series[0].data.push(Number(e.value));
+			phosphorus_times.push(e.created_at);
+
+			phosphorusChart.updateOptions({
+				xaxis: {
+					categories: phosphorus_times
+				},
+				series: phosphorus_series
+			});
+		});
+	}, 1000);
 </script>

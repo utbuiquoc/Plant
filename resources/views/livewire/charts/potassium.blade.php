@@ -28,7 +28,13 @@
         series: potassium_series,
         chart: {
             height: 350,
-            type: 'area'
+            type: 'area',
+			animations: {
+				enabled: false,
+			},
+			zoom: {
+				enabled: false
+			}
         },
         dataLabels: {
             enabled: false
@@ -55,6 +61,28 @@
         },
     };
 
-    var chart = new ApexCharts(document.querySelector("#potassium"), options);
-    chart.render();
+    var potassiumChart = new ApexCharts(document.querySelector("#potassium"), options);
+    potassiumChart.render();
+
+    setTimeout(() => {
+		Echo.channel('potassium').listen('Potassium', (e) => {
+			if (!(e.device_id == device_id)) return;
+			console.log(e);
+			
+			if (potassium_series[0].data.length > 20) {
+				potassium_series[0].data.shift();
+				potassium_times.shift();
+			}
+
+			potassium_series[0].data.push(Number(e.value));
+			potassium_times.push(e.created_at);
+
+			potassiumChart.updateOptions({
+				xaxis: {
+					categories: potassium_times
+				},
+				series: potassium_series
+			});
+		});
+	}, 1000);
 </script>

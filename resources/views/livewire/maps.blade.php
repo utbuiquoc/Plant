@@ -17,8 +17,11 @@
         let toastEl = `
             <div <div class="grid grid-cols-2 w-[300px]">
                 <div class="grid-span-1 flex flex-col space-y-2">
-                    <p class="font-bold !m-0">Vị trí:</p> ${device.latitude}, ${device.longitude}
-                    <p class="font-bold !m-0">Lắp đặt vào:</p> ${new Date(device.created_at).toLocaleString()}
+                    <p class="font-bold !m-0">Vị trí:</p> 
+                        <p class="!m-0 !ms-1">Vĩ độ: ${device.latitude}</p> 
+                        <p class="!m-0 !ms-1">Toạ độ: ${device.longitude}</p>
+                    <p class="font-bold !m-0">Lắp đặt vào:</p> 
+                        <p class="!m-0 !ms-1">${new Date(device.created_at).toLocaleString()}</p>
                 </div>
                 <div class="grid-span-1">
                     <a href="/device/${device.id}" class="block w-3 h-3 absolute right-[20px] top-[6px] text-gray-400">@svg('gravityui-arrow-up-right-from-square')</a>

@@ -22,7 +22,13 @@ Route::get('/warning', Warning::class)->name('warning');
 Route::get('/fake-data', FakeData::class);
 Route::get("/gen-data", [App\Http\Controllers\DataController::class, 'test']);
 
-// use App\Models\AirQuality;
-// Route::get('/test', function() {
-//     return gettype((int)AirQuality::where('device_id', 1)->orderBy('id', 'DESC')->first()->value);
-// });
+use App\Events\AirTemp;
+Route::get('/test', function() {
+    $airtemp = [
+        'device_id' => 1,
+        'value' => rand(20, 25),
+        'created_at' => now(),
+    ];
+    // DB::table('airtemps')->insert($airtemp);
+    broadcast(new AirTemp($airtemp))->toOthers();
+});

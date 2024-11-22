@@ -12,10 +12,12 @@
 		</div>
 		
 		<div class="col-span-4 flex flex-col">
-			<div class="mb-5 bg-white rounded-xl p-5 border-solid border border-grey-500">
-				<div class="flex flex-row text-xl font-semibold mb-3">
-					<x-bx-notification class="w-7 mt-0.5" /> 
-					<p class="ms-2">Thông báo</p>
+			<div class="mb-5 bg-white rounded-xl p-2 border-solid border border-grey-500">
+				<div class="flex flex-col text-xl font-semibold">
+					<div class="flex">
+						<span class="ms-2 text-center h-8 w-8 inline-block text-yellow-500">@svg('heroicon-o-shield-exclamation')</span>
+						<p class="ms-2 font-semibold text-lg mt-0.5">Có 3 chỉ số đạt chưa yêu cầu</p>
+					</div>
 				</div>
 			</div>
 			
@@ -31,7 +33,7 @@
 				</div>
 			</div>
 
-			<div class="w-full h-[32.5rem] bg-white rounded-xl border-solid border border-grey-500">
+			<div class="w-full h-[33rem] bg-white rounded-xl border-solid border border-grey-500">
 				<livewire:map :ids="0" />
 			</div>			
 		</div>

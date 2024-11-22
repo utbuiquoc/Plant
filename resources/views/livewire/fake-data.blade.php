@@ -30,7 +30,7 @@
                 axios.get('/gen-data')
                     .then(res => {
                         console.log(res);
-                        log.insertAdjacentHTML('beforeend', `<p>${res.data}</p>`);
+                        // log.insertAdjacentHTML('beforeend', `<p>${res.data}</p>`);
                     })
                     .catch(error => {
                         console.log(error);

@@ -28,7 +28,13 @@
 		series: pH_series,
 		chart: {
 			type: 'bar',
-			height: 350
+			height: 350,
+			animations: {
+				enabled: false,
+			},
+			zoom: {
+				enabled: false
+			}
 		},
 		plotOptions: {
 			bar: {
@@ -60,12 +66,33 @@
 		tooltip: {
 			y: {
 				formatter: function(val) {
-					return "$ " + val + "  pH"
+					return val + "  pH"
 				}
 			}
 		}
 	};
 
-	var chart = new ApexCharts(document.querySelector("#pH"), pHOptions);
-	chart.render();
+	var pHChart = new ApexCharts(document.querySelector("#pH"), pHOptions);
+	pHChart.render();
+
+	setTimeout(() => {
+		Echo.channel('ph').listen('pH', (e) => {
+			if (!(e.device_id == device_id)) return;
+			
+			if (pH_series[0].data.length > 20) {
+				pH_series[0].data.shift();
+				pH_times.shift();
+			}
+
+			pH_series[0].data.push(Number(e.value));
+			pH_times.push(e.created_at);
+
+			pHChart.updateOptions({
+				xaxis: {
+					categories: pH_times
+				},
+				series: pH_series
+			});
+		});
+	}, 1000);
 </script>

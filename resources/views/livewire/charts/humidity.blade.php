@@ -28,7 +28,13 @@
         series: humidity_series,
         chart: {
             height: 350,
-            type: 'area'
+            type: 'area',
+			animations: {
+				enabled: false,
+			},
+			zoom: {
+				enabled: false
+			}
         },
         dataLabels: {
             enabled: false
@@ -41,7 +47,7 @@
             categories: humidity_times,
         },
 		title: {
-			text: 'Độ dẫn điện',
+			text: 'Độ ẩm',
 			align: 'left'
 		},
         tooltip: {
@@ -51,6 +57,27 @@
         },
     };
 
-    var chart = new ApexCharts(document.querySelector("#humidity"), options);
-    chart.render();
+    var humidityChart = new ApexCharts(document.querySelector("#humidity"), options);
+    humidityChart.render();
+
+    setTimeout(() => {
+		Echo.channel('humidity').listen('Humidity', (e) => {
+			if (!(e.device_id == device_id)) return;
+			
+			if (humidity_series[0].data.length > 20) {
+				humidity_series[0].data.shift();
+				humidity_times.shift();
+			}
+
+			humidity_series[0].data.push(Number(e.value));
+			humidity_times.push(e.created_at);
+
+			humidityChart.updateOptions({
+				xaxis: {
+					categories: humidity_times,
+				},
+				series: humidity_series,
+			});
+		});
+	}, 1000);
 </script>

@@ -24,11 +24,17 @@
 		});
 	});
     
-    var options = {
+    var nitrogenOptions = {
         series: nitrogen_series,
         chart: {
             height: 350,
-            type: 'area'
+            type: 'area',			
+			animations: {
+				enabled: false,
+			},
+			zoom: {
+				enabled: false
+			}
         },
         dataLabels: {
             enabled: false
@@ -55,6 +61,28 @@
         },
     };
 
-    var chart = new ApexCharts(document.querySelector("#nitrogen"), options);
-    chart.render();
+    var nitrogenChart = new ApexCharts(document.querySelector("#nitrogen"), nitrogenOptions);
+    nitrogenChart.render();
+
+    setTimeout(() => {
+		Echo.channel('nitrogen').listen('Nitrogen', (e) => {
+			if (!(e.device_id == device_id)) return;
+			console.log(e);
+			
+			if (nitrogen_series[0].data.length > 20) {
+				nitrogen_series[0].data.shift();
+				nitrogen_times.shift();
+			}
+
+			nitrogen_series[0].data.push(Number(e.value));
+			nitrogen_times.push(e.created_at);
+
+			nitrogenChart.updateOptions({
+				xaxis: {
+					categories: nitrogen_times
+				},
+				series: nitrogen_series
+			});
+		});
+	}, 1000);
 </script>

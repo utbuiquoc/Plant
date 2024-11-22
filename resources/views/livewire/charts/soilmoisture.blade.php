@@ -3,32 +3,38 @@
 </div>
 
 <script>
-    let soilmoisutre_data = @json($data);
-	let soilmoisutre_series = [];
-    let soilmoisutre_times = [];
+    let soilmoisture_data = @json($data);
+	let soilmoisture_series = [];
+    let soilmoisture_times = [];
 
-    soilmoisutre_data[0].forEach(el => {
-        soilmoisutre_times.push(el.created_at);
+    soilmoisture_data[0].forEach(el => {
+        soilmoisture_times.push(el.created_at);
     });
 
-	soilmoisutre_data.forEach(data => {
+	soilmoisture_data.forEach(data => {
 		let values = [];
 		let name = 'Thiết bị ' + data[0].device_id;
 		data.forEach(el => {
 			values.push(Number(el.value));
 		});
 		
-		soilmoisutre_series.push({
+		soilmoisture_series.push({
 			name: name,
 			data: values,
 		});
 	});
 
     var options = {
-        series: soilmoisutre_series,
+        series: soilmoisture_series,
         chart: {
             height: 350,
-            type: 'area'
+            type: 'area',
+			animations: {
+				enabled: false,
+			},
+			zoom: {
+				enabled: false
+			}
         },
         dataLabels: {
             enabled: false
@@ -38,7 +44,7 @@
         },
         xaxis: {
             type: 'datetime',
-            categories: soilmoisutre_times
+            categories: soilmoisture_times
         },
 		title: {
 			text: 'Độ ẩm đất',
@@ -51,6 +57,28 @@
         },
     };
 
-    var chart = new ApexCharts(document.querySelector("#soilmoisture"), options);
-    chart.render();
+    var soilMoistureChart = new ApexCharts(document.querySelector("#soilmoisture"), options);
+    soilMoistureChart.render();
+
+    setTimeout(() => {
+		Echo.channel('soil-moisture').listen('SoilMoisture', (e) => {
+			if (!(e.device_id == device_id)) return;
+			console.log(e);
+			
+			if (soilmoisture_series[0].data.length > 20) {
+				soilmoisture_series[0].data.shift();
+				soilmoisture_times.shift();
+			}
+
+			soilmoisture_series[0].data.push(Number(e.value));
+			soilmoisture_times.push(e.created_at);
+
+			soilMoistureChart.updateOptions({
+				xaxis: {
+					categories: soilmoisture_times
+				},
+				series: soilmoisture_series
+			});
+		});
+	}, 1000);
 </script>
