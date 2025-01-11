@@ -14,6 +14,7 @@ use App\Models\Potassium;
 use App\Models\Rain;
 use App\Models\SoilMoisture;
 use App\Models\SoilTemperature;
+use App\Models\Conductivity;
 
 class Overview extends Component
 {
@@ -31,6 +32,7 @@ class Overview extends Component
     public $Rain = 0;
     public $SoilMoisture = 0;
     public $SoilTemperature = 0;
+    public $Conductivity = 0;
 
     public function mount($ids) {
         $num_devices = Device::count();
@@ -44,8 +46,8 @@ class Overview extends Component
                 $this->Phosphorus       += (int)Phosphorus::where('device_id', $i+1)->orderBy('id', 'DESC')->first()->value;
                 $this->Potassium        += (int)Potassium::where('device_id', $i+1)->orderBy('id', 'DESC')->first()->value;
                 $this->SoilMoisture     += (int)SoilMoisture::where('device_id', $i+1)->orderBy('id', 'DESC')->first()->value;
-                // $this->Rain             += (int)Rain::where('device_id', $i+1)->orderBy('id', 'DESC')->first()->value;
                 $this->SoilTemperature  += (int)SoilTemperature::where('device_id', $i+1)->orderBy('id', 'DESC')->first()->value;
+                $this->Conductivity     += (int)Conductivity::where('device_id', $i+1)->orderBy('id', 'DESC')->first()->value;
             }
         } else {
             $this->AirQuality       = (int)AirQuality::where('device_id', $ids)->orderBy('id', 'DESC')->first()->value;
@@ -56,8 +58,8 @@ class Overview extends Component
             $this->Phosphorus       = (int)Phosphorus::where('device_id', $ids)->orderBy('id', 'DESC')->first()->value;
             $this->Potassium        = (int)Potassium::where('device_id', $ids)->orderBy('id', 'DESC')->first()->value;
             $this->SoilMoisture     = (int)SoilMoisture::where('device_id', $ids)->orderBy('id', 'DESC')->first()->value;
-            // $this->Rain             = (int)Rain::where('device_id', $ids)->orderBy('id', 'DESC')->first()->value;
             $this->SoilTemperature  = (int)SoilTemperature::where('device_id', $ids)->orderBy('id', 'DESC')->first()->value;
+            $this->Conductivity     = (int)Conductivity::where('device_id', $ids)->orderBy('id', 'DESC')->first()->value;
         }
 
         if ($ids == "0") {
@@ -70,6 +72,7 @@ class Overview extends Component
             $this->Potassium        /= $num_devices;
             $this->SoilMoisture     /= $num_devices;
             $this->SoilTemperature  /= $num_devices;
+            $this->Conductivity     /= $num_devices;
         }
     }
     

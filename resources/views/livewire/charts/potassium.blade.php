@@ -2,7 +2,7 @@
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
 </div>
 
-<script>
+<script type="module">
     let potassium_data = @json($data);
 	let potassium_series = [];
     let potassium_times = [];
@@ -66,7 +66,7 @@
 
     setTimeout(() => {
 		Echo.channel('potassium').listen('Potassium', (e) => {
-			if (!(e.device_id == device_id)) return;
+			// if (!(e.device_id == device_id)) return;
 			console.log(e);
 			
 			if (potassium_series[0].data.length > 20) {

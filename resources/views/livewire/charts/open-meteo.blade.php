@@ -2,13 +2,20 @@
     {{-- In work, do what you enjoy. --}}
 </div>
 
-<script>
-    axios.get('https://api.open-meteo.com/v1/forecast?latitude=17.4692&longitude=106.6155&hourly=temperature_2m,precipitation_probability,precipitation,cloud_cover&timezone=Asia%2FBangkok&start_date=2024-11-22&end_date=2024-11-22')
+<script type="module">
+    const currentDate = new Date();
+
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const day = String(currentDate.getDate()).padStart(2, '0');
+
+    const formattedDate = `${year}-${month}-${day}`;
+
+    // 2025-01-10
+    axios.get(`https://api.open-meteo.com/v1/forecast?latitude=17.4692&longitude=106.6155&hourly=temperature_2m,precipitation_probability,precipitation,cloud_cover&timezone=Asia%2FBangkok&start_date=${formattedDate}&end_date=${formattedDate}`)
     .then(function (response) {
         // xử trí khi thành công
-        console.log(response.data);
-
-        openMeteoDatas = response.data;
+        const openMeteoDatas = response.data;
 
         var options = {
             series: [{

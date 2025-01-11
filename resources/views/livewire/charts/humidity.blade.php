@@ -2,7 +2,7 @@
     {{-- The Master doesn't talk, he acts. --}}
 </div>
 
-<script>
+<script type="module">
     let humidity_data = @json($data);
 	let humidity_series = [];
     let humidity_times = [];
@@ -50,6 +50,10 @@
 			text: 'Độ ẩm',
 			align: 'left'
 		},
+        subtitle: {
+          text: '℃',
+          align: 'left'
+        },
         tooltip: {
             x: {
                 format: 'dd/MM/yy HH:mm'
@@ -62,7 +66,7 @@
 
     setTimeout(() => {
 		Echo.channel('humidity').listen('Humidity', (e) => {
-			if (!(e.device_id == device_id)) return;
+			// if (!(e.device_id == device_id)) return;
 			
 			if (humidity_series[0].data.length > 20) {
 				humidity_series[0].data.shift();

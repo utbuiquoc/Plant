@@ -2,7 +2,7 @@
     {{-- Stop trying to control. --}}
 </div>
 
-<script>
+<script type="module">
     let rain_data = @json($data);
     let datas = [];
 

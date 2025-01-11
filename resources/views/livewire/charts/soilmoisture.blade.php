@@ -2,7 +2,7 @@
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
 </div>
 
-<script>
+<script type="module">
     let soilmoisture_data = @json($data);
 	let soilmoisture_series = [];
     let soilmoisture_times = [];
@@ -46,6 +46,10 @@
             type: 'datetime',
             categories: soilmoisture_times
         },
+        subtitle: {
+          text: '℃',
+          align: 'left'
+        },
 		title: {
 			text: 'Độ ẩm đất',
 			align: 'left'
@@ -62,7 +66,7 @@
 
     setTimeout(() => {
 		Echo.channel('soil-moisture').listen('SoilMoisture', (e) => {
-			if (!(e.device_id == device_id)) return;
+			// if (!(e.device_id == device_id)) return;
 			console.log(e);
 			
 			if (soilmoisture_series[0].data.length > 20) {

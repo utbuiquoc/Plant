@@ -2,7 +2,7 @@
     {{-- Be like water. --}}
 </div>
 
-<script>
+<script type="module">
 	let pH_data = @json($data);
 	let pH_series = [];
     let pH_times = [];
@@ -77,7 +77,7 @@
 
 	setTimeout(() => {
 		Echo.channel('ph').listen('pH', (e) => {
-			if (!(e.device_id == device_id)) return;
+			// if (!(e.device_id == device_id)) return;
 			
 			if (pH_series[0].data.length > 20) {
 				pH_series[0].data.shift();

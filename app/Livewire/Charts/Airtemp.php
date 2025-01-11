@@ -10,7 +10,9 @@ class Airtemp extends Component
     public $id = [];
     public $data = [];
 
-    public function mount($ids) {
+    public function mount() {
+        $ids = 0;
+
         if ($ids == 0) {
             for ($i = 0; $i < Device::count(); $i++) {
                 $this->data[$i] = temp::where('device_id', $i+1)->orderBy('id', 'desc')->take(20)->get();

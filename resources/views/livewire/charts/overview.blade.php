@@ -2,7 +2,7 @@
     {{-- Do your work, then step back. --}}
 </div>
 
-<script>
+<script type="module">
     var options = {
         series: [{
             data: [{
@@ -41,6 +41,10 @@
                     x: 'Nhiệt độ đất',
                     y: {{ $SoilTemperature }}
                 },
+                {
+                    x: 'Độ dẫn điện',
+                    y: {{ $Conductivity }}
+                },
             ]
         }],
         legend: {
@@ -59,7 +63,6 @@
                 fontSize: '12px',
             },
             formatter: function(text, op) {
-                console.log(op.w.config.colors[0]);
                 if (text == 'Nhiệt độ môi trường' || text == "Nhiệt độ đất")
                     return [text, op.value + '℃']
                 if (text == 'Độ ẩm đất' || text == 'Độ ẩm không khí')

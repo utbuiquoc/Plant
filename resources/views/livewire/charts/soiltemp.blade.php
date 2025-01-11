@@ -1,7 +1,7 @@
 {{-- Care about people's approval and you will be their prisoner. --}}
 <div id="soil-moisture" class="w-full h-full"></div>
 
-<script>
+<script type="module">
 	let soiltemp_data = @json($data);
 	let soiltemp_series = [];
     let soiltemp_times = [];
@@ -66,7 +66,7 @@
 
 	setTimeout(() => {
 		Echo.channel('soil-temp').listen('SoilTemp', (e) => {
-			if (!(e.device_id == device_id)) return;
+			// if (!(e.device_id == device_id)) return;
 			console.log(e);
 			
 			if (soiltemp_series[0].data.length > 20) {

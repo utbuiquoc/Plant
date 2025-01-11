@@ -2,7 +2,7 @@
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
 </div>
 
-<script>
+<script type="module">
 	let airquality_data = @json($data);
 	let irquality_series = [];
 
@@ -98,7 +98,7 @@
 
 	setTimeout(() => {
 		Echo.channel('air-quality').listen('AirQuality', (e) => {
-			if (!(e.device_id == device_id)) return;
+			// if (!(e.device_id == device_id)) return;
 			console.log(e);
 			
 			if (irquality_series[0].data.length > 20) {

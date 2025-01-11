@@ -2,7 +2,7 @@
     {{-- Do your work, then step back. --}}
 </div>
 
-<script>
+<script type="module">
     let nitrogen_data = @json($data);
 	let nitrogen_series = [];
     let nitrogen_times = [];
@@ -66,7 +66,8 @@
 
     setTimeout(() => {
 		Echo.channel('nitrogen').listen('Nitrogen', (e) => {
-			if (!(e.device_id == device_id)) return;
+			console.log(e);
+			// if (!(e.device_id == device_id)) return;
 			console.log(e);
 			
 			if (nitrogen_series[0].data.length > 20) {

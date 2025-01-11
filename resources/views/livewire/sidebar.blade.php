@@ -1,4 +1,4 @@
-<div class="p-4 w-[300px] h-dvh border-solid border-r border-grey-500 ">
+<div class="p-4 w-[300px] h-full border-solid border-r border-grey-500 ">
     <h1 class="text-2xl">MNFORESUT</h1>
 
     <div class="flex flex-col mt-3">

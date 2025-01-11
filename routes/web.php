@@ -10,6 +10,7 @@ use App\Livewire\Analytics\Devicetest;
 use App\Livewire\Warning;
 use App\Livewire\FakeData;
 use App\Livewire\Test;
+use App\Http\Controllers\DataController;
 
 Route::get('/', DashBoard::class)->name('dashboard');
 Route::get('/maps', Maps::class)->name('maps');
@@ -20,15 +21,9 @@ Route::get('/device/{id}', Device::class)->name('device');
 Route::get('/warning', Warning::class)->name('warning');
 
 Route::get('/fake-data', FakeData::class);
-Route::get("/gen-data", [App\Http\Controllers\DataController::class, 'test']);
+Route::get("/gen-data", [DataController::class, 'test']);
 
-use App\Events\AirTemp;
-Route::get('/test', function() {
-    $airtemp = [
-        'device_id' => 1,
-        'value' => rand(20, 25),
-        'created_at' => now(),
-    ];
-    // DB::table('airtemps')->insert($airtemp);
-    broadcast(new AirTemp($airtemp))->toOthers();
-});
+Route::get('/insert/{humidity}/{temperature}/{soilmoisture}/{soiltemp}/{conductivity}/{pH}/{nitrogen}/{phosphorus}/{potassium}', [DataController::class, 'insert']);
+
+use App\Livewire\Charts\Conductivity;
+Route::get('/test', Conductivity::class);

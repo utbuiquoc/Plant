@@ -2,7 +2,7 @@
     {{-- The best athlete wants his opponent at his best. --}}
 </div>
 
-<script>
+<script type="module">
 	let airtemp_data = @json($data);
 	let airtemp_series = [];
     let airtemp_times = [];
@@ -69,7 +69,8 @@
 
 	setTimeout(() => {
 		Echo.channel('air-temp').listen('AirTemp', (e) => {
-			if (!(e.device_id == device_id)) return;
+			console.log(e);
+			// if (!(e.device_id == device_id)) return;
 			
 			if (airtemp_series[0].data.length > 20) {
 				airtemp_series[0].data.shift();

@@ -2,7 +2,7 @@
     {{-- Because she competes with no one, no one can compete with her. --}}
 </div>
 
-<script>
+<script type="module">
     let phosphorus_data = @json($data);
 	let phosphorus_series = [];
     let phosphorus_times = [];
@@ -66,7 +66,7 @@
 
     setTimeout(() => {
 		Echo.channel('phosphorus').listen('Phosphorus', (e) => {
-			if (!(e.device_id == device_id)) return;
+			// if (!(e.device_id == device_id)) return;
 			console.log(e);
 			
 			if (phosphorus_series[0].data.length > 20) {
