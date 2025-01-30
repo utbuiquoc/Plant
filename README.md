@@ -1,12 +1,16 @@
 # HỆ THỐNG CHẨN ĐOÁN VÀ GIÁM SÁT CHẤT LƯỢNG ĐẤT TRỒNG RỪNG
-<image src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" />
-<image src="https://img.shields.io/badge/livewire-4e56a6?style=for-the-badge&logo=livewire&logoColor=white" />
-<image src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-<image src="https://img.shields.io/badge/-HuggingFace-FDEE21?style=for-the-badge&logo=HuggingFace&logoColor=black" />
-<image src="https://img.shields.io/badge/fastapi-109989?style=for-the-badge&logo=FASTAPI&logoColor=white" />
-<image src="https://img.shields.io/badge/pypi-3775A9?style=for-the-badge&logo=pypi&logoColor=white" />
-<image src="https://img.shields.io/badge/Chart%20js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white" />
+<p float="left">
+    <image src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" />
+    <image src="https://img.shields.io/badge/livewire-4e56a6?style=for-the-badge&logo=livewire&logoColor=white" />
+    <image src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+    <image src="https://img.shields.io/badge/-HuggingFace-FDEE21?style=for-the-badge&logo=HuggingFace&logoColor=black" />
+    <image src="https://img.shields.io/badge/fastapi-109989?style=for-the-badge&logo=FASTAPI&logoColor=white" />
+    <image src="https://img.shields.io/badge/pypi-3775A9?style=for-the-badge&logo=pypi&logoColor=white" />
+    <image src="https://img.shields.io/badge/Chart%20js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white" />
+</p>
 
+![image](https://raw.githubusercontent.com/utbuiquoc/Plant/refs/heads/main/resources/img/dashboard.png)
+![image](https://raw.githubusercontent.com/utbuiquoc/Plant/refs/heads/main/resources/img/analysis.png)
 ## Tổng quan dự án
 Đề án nghiên cứu **Hệ thống chẩn đoán và giám sát chất lượng đất trồng rừng** được phát triển nhằm tham gia cuộc thi Khoa học Kỹ thuật. Dự án tập trung vào việc xây dựng một hệ thống thông minh giúp đánh giá, theo dõi và quản lý chất lượng đất trồng rừng một cách chính xác và hiệu quả. Hệ thống này không chỉ hỗ trợ các nhà nghiên cứu và quản lý rừng trong việc đưa ra quyết định kịp thời mà còn góp phần phục hồi và bảo vệ tài nguyên đất, nâng cao hiệu suất trồng rừng và thúc đẩy phát triển bền vững.
 
